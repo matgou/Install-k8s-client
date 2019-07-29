@@ -1,0 +1,11 @@
+- name: Initialisation du client kubernetes
+  hosts: kubeadmin
+  tasks:
+    - name: Création du répertoire ~/.kube
+      file:
+        state: directory
+        path: /home/ansible/.kube
+    - name: Copie du fichier kubeconfig
+      copy:
+        src: kube-config
+        dest: /home/ansible/.kube/config
